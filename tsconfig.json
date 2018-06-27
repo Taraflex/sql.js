@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "alwaysStrict": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "target": "es5",
+        "lib": [
+            "es6"
+        ]
+    },
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+}
