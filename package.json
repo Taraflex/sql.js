@@ -26,6 +26,13 @@
         "url": "https://github.com/Taraflex/sql.js.git"
     },
     "license": "MIT",
+    "contributors": [
+        "Ophir LOJKINE <pere.jobs@gmail.com> (https://github.com/lovasoa)",
+        "kripken",
+        "hankinsoft",
+        "firien",
+        "dinedal"
+    ],
     "main": "./index.js",
     "scripts": {
         "build": "emmake make",
