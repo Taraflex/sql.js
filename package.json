@@ -1,23 +1,40 @@
 {
-	"name": "sql.js",
-	"version": "0.4.0",
-	"description": "SQLite library with support for opening and writing databases, prepared statements, and more. This SQLite library is in pure javascript (compiled with emscripten).",
-	"keywords": ["sql", "sqlite", "stand-alone", "relational", "database", "RDBMS", "data", "query", "statement", "emscripten", "asm", "asm.js"],
-	"license": "MIT",
-	"main": "./js/sql.js",
-	"scripts": { "test": "node test/all.js" },
-	"homepage": "http://github.com/kripken/sql.js",
-	"repository" :
-	{	"type" : "git",
-		"url" : "http://github.com/kripken/sql.js.git"
-	},
-	"bugs": {
-		"url" : "https://github.com/kripken/sql.js/issues",
-		"email" : "pere.jobs@gmail.com"
-	},
-	"devDependencies": {
-    "workerjs": ">=0.1",
-    "test": ">=0.6"
-  }
+    "name": "wasm-sql.js",
+    "version": "0.4.0",
+    "description": "SQLite library with support for opening and writing databases, prepared statements, and more. This SQLite library is in pure javascript (compiled with emscripten).",
+    "keywords": [
+        "sql",
+        "sqlite",
+        "stand-alone",
+        "relational",
+        "database",
+        "RDBMS",
+        "data",
+        "query",
+        "statement",
+        "emscripten",
+        "asm",
+        "asm.js"
+    ],
+    "homepage": "https://github.com/Taraflex/sql.js",
+    "bugs": {
+        "email": "pere.jobs@gmail.com",
+        "url": "https://github.com/Taraflex/sql.js/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Taraflex/sql.js.git"
+    },
+    "license": "MIT",
+    "main": "./index.js",
+    "scripts": {
+        "build": "emmake make",
+        "test": "node test/all.js"
+    },
+    "devDependencies": {
+        "assert": "^1.4.1",
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "coffeescript": "^2.3.1"
+    }
 }
-
