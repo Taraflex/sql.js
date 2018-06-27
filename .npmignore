@@ -4,3 +4,9 @@ coffee
 .babelrc
 .travis.yml
 tsconfig.json
+Makefile
+
+dist/*.map
+dist/*.wast
+dist/sql-debug*
+dist/api.js
