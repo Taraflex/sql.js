@@ -1,6 +1,6 @@
-test/
-c/
-coffee/
-node_modules/
-node-debug.log
-.git/
+test
+c
+coffee
+.babelrc
+.travis.yml
+tsconfig.json

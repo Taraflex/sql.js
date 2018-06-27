@@ -1,14 +1,11 @@
 node_modules
-*~
-
-# LLVM bitcode
-c/sqlite3.bc
-c/extension-functions.bc
 
 dist/*.map
 dist/*.wast
 dist/sql-debug*
 dist/api.js
+
+*.log
 
 *-lock.json
 *.lock
