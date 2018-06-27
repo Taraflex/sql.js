@@ -1,14 +1,18 @@
-exports.test = function(sql, assert) {
+const SQL = require('../index');
+const assert = require('assert');
 
+(async () => {
+  await SQL.init();
+  
   assert.throws(function(){
-    var db = new sql.Database([1,2,3]);
+    var db = new SQL.Database([1,2,3]);
     db.exec("SELECT * FROM sqlite_master");
   },
                 /not a database/,
                 "Querying an invalid database should throw an error");
 
   // Create a database
-  var db = new sql.Database();
+  var db = new SQL.Database();
 
   // Execute some sql
   var res = db.exec("CREATE TABLE test (a INTEGER PRIMARY KEY, b, c, d, e);");
@@ -51,10 +55,5 @@ exports.test = function(sql, assert) {
   assert.throws(function(){
     stmt.run([3]);
   }, "Statements should'nt be able to execute after the database is closed");
-};
-
-if (module == require.main) {
-  var sql = require('../js/sql.js');
-  var assert = require("assert");
-  exports.test(sql, assert);
-}
+	
+})().catch(console.error)

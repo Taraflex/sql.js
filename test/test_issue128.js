@@ -1,12 +1,16 @@
-exports.test = function(sql, assert) {
+const SQL = require('../index');
+const assert = require('assert');
+
+(async () => {
+  await SQL.init();
   // Create a database
-  var db = new sql.Database();
+  var db = new SQL.Database();
 
   db.run("CREATE TABLE test (data TEXT);");
 
   db.exec("SELECT * FROM test;");
   assert.deepEqual(db.getRowsModified(), 0, "getRowsModified returns 0 at first");
-  
+
   db.exec("INSERT INTO test VALUES ('Hello1');");
   db.exec("INSERT INTO test VALUES ('Hello');");
   db.exec("INSERT INTO test VALUES ('Hello');");
@@ -22,10 +26,5 @@ exports.test = function(sql, assert) {
   db.exec("SELECT * FROM test;");
   assert.deepEqual(db.getRowsModified(), 4, "getRowsModified unmodified by queries");
 
-};
 
-if (module == require.main) {
-  var sql = require('../js/sql.js');
-  var assert = require('assert');
-  exports.test(sql, assert);
-}
+})().catch(console.error)

@@ -1,4 +1,8 @@
-exports.test = function(SQL, assert) {
+const SQL = require('../index');
+const assert = require('assert');
+
+(async () => {
+	await SQL.init();
 	//Node filesystem module - You know that.
 	var fs = require('fs');
 
@@ -13,13 +17,8 @@ exports.test = function(SQL, assert) {
 	//[{"columns":["id","content"],"values":[["0","hello"],["1","world"]]}]
 	var res = db.exec("SELECT * FROM test WHERE id = 0");
 	assert.deepEqual(res,
-									[{"columns":["id","content"],"values":[[0,"hello"]]}],
-									"One should be able to read the contents of an SQLite database file read from disk");
+		[{ "columns": ["id", "content"], "values": [[0, "hello"]] }],
+		"One should be able to read the contents of an SQLite database file read from disk");
 	db.close();
-}
 
-if (module == require.main) {
-	var sql = require('../js/sql.js');
-	var assert = require("assert");
-	exports.test(sql, assert);
-}
+})().catch(console.error)

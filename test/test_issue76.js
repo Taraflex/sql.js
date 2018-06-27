@@ -1,16 +1,15 @@
-exports.test = function(sql, assert) {
+const SQL = require('../index');
+const assert = require('assert');
+
+(async () => {
+	await SQL.init();
 	// Create a database
-	var db = new sql.Database();
+	var db = new SQL.Database();
 	// Ultra-simple query
 	var stmt = db.prepare("VALUES (?)");
 	// Bind null to the parameter and get the result
 	assert.deepEqual(stmt.get([null]), [null],
-			"binding a null value to a statement parameter");
+		"binding a null value to a statement parameter");
 	db.close();
-};
 
-if (module == require.main) {
-	var sql = require('../js/sql.js');
-	var assert = require('assert');
-	exports.test(sql, assert);
-}
+})().catch(console.error)

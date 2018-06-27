@@ -1,5 +1,10 @@
-exports.test = function(sql, assert) {
-  var db = new sql.Database();
+const SQL = require('../index');
+const assert = require('assert');
+
+(async () => {
+  await SQL.init();
+  
+  var db = new SQL.Database();
   var res = db.exec("CREATE TABLE test (str_data, data);");
 
   db.run("INSERT INTO test VALUES ('Hello World!', 1);");
@@ -68,11 +73,5 @@ exports.test = function(sql, assert) {
 
   var res = db.exec("SELECT reverse(str_data) FROM test;");
   assert.equal(res[0]['values'][0][0], "!dlroW olleH", "reverse() function works");
-
-};
-
-if (module == require.main) {
-  var sql = require('../js/sql.js');
-  var assert = require('assert');
-  exports.test(sql, assert);
-}
+	
+})().catch(console.error)

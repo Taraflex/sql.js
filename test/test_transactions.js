@@ -1,4 +1,9 @@
-exports.test = function(SQL, assert){
+const SQL = require('../index');
+const assert = require('assert');
+
+(async () => {
+  await SQL.init();
+
   var db = new SQL.Database();
   db.exec("CREATE TABLE test (data); INSERT INTO test VALUES (1);");
 
@@ -12,7 +17,7 @@ exports.test = function(SQL, assert){
   db.exec("ROLLBACK;");
 
   var res = db.exec("SELECT data FROM test WHERE data = 4;");
-  var expectedResult =  [];
+  var expectedResult = [];
   assert.deepEqual(res, expectedResult, "transaction rollbacks work");
 
   // Open a transaction
@@ -25,9 +30,9 @@ exports.test = function(SQL, assert){
   db.exec("COMMIT;");
 
   var res = db.exec("SELECT data FROM test WHERE data = 4;");
-  var expectedResult =  [{
-    columns : ['data'],
-    values : [
+  var expectedResult = [{
+    columns: ['data'],
+    values: [
       [4]
     ]
   }];
@@ -43,19 +48,14 @@ exports.test = function(SQL, assert){
   db.exec("ROLLBACK;");
 
   var res = db.exec("SELECT data FROM test WHERE data IN (4,5);");
-  var expectedResult =  [{
-    columns : ['data'],
-    values : [
+  var expectedResult = [{
+    columns: ['data'],
+    values: [
       [4]
     ]
   }];
   assert.deepEqual(res, expectedResult, "transaction rollbacks after commits work");
 
   db.close();
-};
 
-if (module == require.main) {
-  var sql = require('../js/sql.js');
-  var assert = require("assert");
-  exports.test(sql, assert);
-}
+})().catch(console.error)

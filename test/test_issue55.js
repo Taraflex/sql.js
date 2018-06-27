@@ -1,28 +1,26 @@
-exports.test = function(sql, assert) {
-  var fs = require('fs');
-  var path = require('path');
+const SQL = require('../index');
+const assert = require('assert');
 
-  var filebuffer = fs.readFileSync(path.join(__dirname, 'issue55.db'));
+(async () => {
+    await SQL.init();
 
-  //Works
-  var db = new SQL.Database(filebuffer);
+    var fs = require('fs');
+    var path = require('path');
 
-  var origCount = db.prepare("SELECT COUNT(*) AS count FROM networklocation").getAsObject({}).count;
+    var filebuffer = fs.readFileSync(path.join(__dirname, 'issue55.db'));
 
-  db.run("INSERT INTO networklocation (x, y, network_id, floor_id) VALUES (?, ?, ?, ?)", [123, 123, 1, 1]);
+    //Works
+    var db = new SQL.Database(filebuffer);
 
-  var count = db.prepare("SELECT COUNT(*) AS count FROM networklocation").getAsObject({}).count;
+    var origCount = db.prepare("SELECT COUNT(*) AS count FROM networklocation").getAsObject({}).count;
 
-  assert.equal(count, origCount + 1, "The row has been inserted");
-  var dbCopy = new sql.Database(db.export());
-  var newCount = dbCopy.prepare("SELECT COUNT(*) AS count FROM networklocation").getAsObject({}).count;
-  assert.equal(newCount, count, "export and reimport copies all the data");
-};
+    db.run("INSERT INTO networklocation (x, y, network_id, floor_id) VALUES (?, ?, ?, ?)", [123, 123, 1, 1]);
 
-if (module == require.main) {
-  var sql = require('../js/sql.js');
-  var assert = require('assert');
-  var done = function(){process.exit();}
+    var count = db.prepare("SELECT COUNT(*) AS count FROM networklocation").getAsObject({}).count;
 
-  exports.test(sql, assert, done);
-}
+    assert.equal(count, origCount + 1, "The row has been inserted");
+    var dbCopy = new SQL.Database(db.export());
+    var newCount = dbCopy.prepare("SELECT COUNT(*) AS count FROM networklocation").getAsObject({}).count;
+    assert.equal(newCount, count, "export and reimport copies all the data");
+
+})().catch(console.error)
