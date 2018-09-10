@@ -1,7 +1,5 @@
 #@copyright Ophir LOJKINE
 
-Module['locateFile'] = (file) -> __dirname + '/' + file
-
 listeners = [];
 
 apiTemp = null

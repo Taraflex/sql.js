@@ -1,6 +1,6 @@
 {
     "name": "wasm-sql.js",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "description": "SQLite library with support for opening and writing databases, prepared statements, and more. This SQLite library is in pure javascript (compiled with emscripten).",
     "keywords": [
         "sql",
@@ -36,6 +36,7 @@
     "main": "./index.js",
     "scripts": {
         "build": "emmake make all",
+        "publish-library": "npm publish --registry=https://registry.npmjs.org/ --access=public",
         "test": "node test/all.js"
     },
     "devDependencies": {
