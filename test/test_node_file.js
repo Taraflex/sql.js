@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
 	await SQL.init();
 	//Node filesystem module - You know that.
 	var fs = require('fs');
@@ -21,4 +21,4 @@ const assert = require('assert');
 		"One should be able to read the contents of an SQLite database file read from disk");
 	db.close();
 
-})().catch(console.error)
+}

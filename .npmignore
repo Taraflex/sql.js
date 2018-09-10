@@ -5,6 +5,7 @@ coffee
 .travis.yml
 tsconfig.json
 Makefile
+todo.txt
 
 dist/*.map
 dist/*.wast

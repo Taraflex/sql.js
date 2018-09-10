@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
   await SQL.init();
   
   var db = new SQL.Database();
@@ -74,4 +74,4 @@ const assert = require('assert');
   var res = db.exec("SELECT reverse(str_data) FROM test;");
   assert.equal(res[0]['values'][0][0], "!dlroW olleH", "reverse() function works");
 	
-})().catch(console.error)
+}

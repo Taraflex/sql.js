@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
     await SQL.init();
 
     var fs = require('fs');
@@ -23,4 +23,4 @@ const assert = require('assert');
     var newCount = dbCopy.prepare("SELECT COUNT(*) AS count FROM networklocation").getAsObject({}).count;
     assert.equal(newCount, count, "export and reimport copies all the data");
 
-})().catch(console.error)
+}

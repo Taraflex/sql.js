@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
     await SQL.init();
     // Create a database
     var db = new SQL.Database();
@@ -48,4 +48,4 @@ const assert = require('assert');
     assert.deepEqual(res, expectedResult,
         "db.exec with a statement that contains a ';'");
 
-})().catch(console.error)
+}

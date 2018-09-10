@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
   await SQL.init();
 
   var db = new SQL.Database();
@@ -58,4 +58,4 @@ const assert = require('assert');
 
   db.close();
 
-})().catch(console.error)
+}

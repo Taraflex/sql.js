@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
 	await SQL.init();
 	// Create a database
 	var db = new SQL.Database();
@@ -12,4 +12,4 @@ const assert = require('assert');
 		"binding a null value to a statement parameter");
 	db.close();
 
-})().catch(console.error)
+}

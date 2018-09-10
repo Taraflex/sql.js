@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
   await SQL.init();
   // Create a database
   var db = new SQL.Database();
@@ -27,4 +27,4 @@ const assert = require('assert');
   assert.deepEqual(db.getRowsModified(), 4, "getRowsModified unmodified by queries");
 
 
-})().catch(console.error)
+}

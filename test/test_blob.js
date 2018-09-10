@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
 	await SQL.init();
 	
 	var db = new SQL.Database();
@@ -34,4 +34,4 @@ const assert = require('assert');
 	assert.strictEqual(stmt.step(), false, "stmt.step() should return false after all values were read");
 	db.close();
 
-})().catch(console.error)
+}

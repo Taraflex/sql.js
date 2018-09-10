@@ -40,7 +40,7 @@ sqlite3_value_double = null
 sqlite3_result_double = null
 sqlite3_result_null = null
 sqlite3_result_text = null
-RegisterExtensionFunctions = null
+#RegisterExtensionFunctions = null
 
 # Represents an SQLite database
 Module['Database'] = class Database
@@ -577,7 +577,7 @@ Module['onRuntimeInitialized'] = () ->
     sqlite3_result_double = Module['cwrap'] 'sqlite3_result_double', '', ['number', 'number']
     sqlite3_result_null = Module['cwrap'] 'sqlite3_result_null', '', ['number']
     sqlite3_result_text = Module['cwrap'] 'sqlite3_result_text', '', ['number', 'string', 'number', 'number']
-    RegisterExtensionFunctions = Module['cwrap'] 'RegisterExtensionFunctions', 'number', ['number']
+    #RegisterExtensionFunctions = Module['cwrap'] 'RegisterExtensionFunctions', 'number', ['number']
 
     listener(Database) for listener in listeners
     listeners = null

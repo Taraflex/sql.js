@@ -1,7 +1,7 @@
 const SQL = require('../index');
 const assert = require('assert');
 
-(async () => {
+module.exports = async () => {
   await SQL.init();
   
   assert.throws(function(){
@@ -56,4 +56,4 @@ const assert = require('assert');
     stmt.run([3]);
   }, "Statements should'nt be able to execute after the database is closed");
 	
-})().catch(console.error)
+}
